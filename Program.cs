@@ -35,7 +35,7 @@ namespace PhoneBook
                 while ((line = read.ReadLine()) != null)
                 {
                     string[] words = line.Split('#');
-                   
+
                     contact.Add(new Contacts(words[0], words[1], words[2], words[3], words[4]));
                 }
                 read.Close();
@@ -62,7 +62,7 @@ namespace PhoneBook
                 {
                     Delete(contact);
                 }
-                else if(userComand == "quit")
+                else if (userComand == "quit")
                 {
                     Console.WriteLine("Do you want to save? yes/no");
                     string ans = Console.ReadLine();
@@ -73,7 +73,7 @@ namespace PhoneBook
                     Console.WriteLine("Good bye");
 
                 }
-                else if(userComand == "help")
+                else if (userComand == "help")
                 {
                     Console.WriteLine("Write save to save your phone book to the pc.");
                     Console.WriteLine("Write delete to delete a contact (remember to save after).");
@@ -83,11 +83,11 @@ namespace PhoneBook
                 }
                 else
                 {
-                    Console.WriteLine("Unknown command: {0}",userComand);
+                    Console.WriteLine("Unknown command: {0}", userComand);
                 }
                 Console.WriteLine();
             } while (userComand != "quit");
-            
+
             Console.ReadKey();
         }
         static void Add(List<Contacts> contact)
@@ -137,7 +137,7 @@ namespace PhoneBook
         {
             Console.Write("Write the first name of the person you want to delete: ");
             string remove = Console.ReadLine();
-            
+
             for (int i = 0; i < contact.Count(); i++)
             {
                 if (remove == contact[i].firstName)
@@ -150,7 +150,7 @@ namespace PhoneBook
                 else
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Did not find the person at row {0}",i);
+                    Console.WriteLine("Did not find the person at row {0}", i);
                 }
             }
         }
