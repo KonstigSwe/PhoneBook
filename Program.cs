@@ -91,7 +91,7 @@ namespace PhoneBook
 
             Console.ReadKey();
         }
-        static void Add(List<Contacts> contact)
+        static void Add(List<Contacts> contact)// add a user to the list
         {
             Console.Write("First name:  ");
             string fname = Console.ReadLine();
@@ -110,7 +110,7 @@ namespace PhoneBook
             Console.WriteLine("Name: {0} {1} Address: {2} E-mail: {3} Phone: {4}", fname, lname, address, email, phon);
             contact.Add(new Contacts(fname, lname, address, email, phon));
         }
-        static void Show(List<Contacts> contact)
+        static void Show(List<Contacts> contact)// show contacts with a choice to search afer one individual person or show all
         {
             Console.WriteLine("do you want to show all or search after one all/one");
             string ans = Console.ReadLine();
@@ -144,7 +144,7 @@ namespace PhoneBook
             }   }      
 
         }
-        static void Save(List<Contacts> contact, string fileLocation)
+        static void Save(List<Contacts> contact, string fileLocation)// saves the list to a file
         {
             using (System.IO.StreamWriter writer = new StreamWriter(fileLocation))
             {
@@ -155,7 +155,7 @@ namespace PhoneBook
             }
             Console.WriteLine("Saved");
         }
-        static void Delete(List<Contacts> contact)
+        static void Delete(List<Contacts> contact)// delites a contact specified by his first name
         {
             Console.Write("Write the first name of the person you want to delete: ");
             string remove = Console.ReadLine();
