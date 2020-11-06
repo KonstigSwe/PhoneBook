@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -75,11 +76,11 @@ namespace PhoneBook
                 }
                 else if (userComand == "help")
                 {
-                    Console.WriteLine("Write save to save your phone book to the pc.");
-                    Console.WriteLine("Write delete to delete a contact (remember to save after).");
-                    Console.WriteLine("Write show to show the contacts you have.");
-                    Console.WriteLine("Write add to add a contact to your contact list (remember to save).");
-                    Console.WriteLine("Write quit to quit the pogram obs it will ask you if you want to save or not.");
+                    Console.WriteLine("Write 'save' to save your phone book to the pc.");
+                    Console.WriteLine("Write 'delete' to delete a contact (remember to save after).");
+                    Console.WriteLine("Write 'show' to show the contacts you have.");
+                    Console.WriteLine("Write 'add' to add a contact to your contact list (remember to save).");
+                    Console.WriteLine("Write 'quit' to quit the pogram obs it will ask you if you want to save or not.");
                 }
                 else
                 {
@@ -111,16 +112,37 @@ namespace PhoneBook
         }
         static void Show(List<Contacts> contact)
         {
-            Console.WriteLine("First name-|-second name----|---Address--|---E-Mail-----|-----Phone number------");
-            for (int i = 0; i < contact.Count(); i++)
+            Console.WriteLine("do you want to show all or search after one all/one");
+            string ans = Console.ReadLine();
+            if (ans == "all")
             {
-                if (contact[i] != null)
-                {
-                    Console.WriteLine("| {0,-10} | {1,-10} | {2,-15} | {3,-25} | {4,-10}|", contact[i].firstName, contact[i].lastName, contact[i].address, contact[i].email, contact[i].phone);
 
+
+                Console.WriteLine("First name-|-second name----|---Address--|---E-Mail-----|-----Phone number------");
+                for (int i = 0; i < contact.Count(); i++)
+                {
+                    if (contact[i] != null)
+                    {
+                        Console.WriteLine("| {0,-10} | {1,-10} | {2,-15} | {3,-25} | {4,-10}|", contact[i].firstName, contact[i].lastName, contact[i].address, contact[i].email, contact[i].phone);
+
+                    }
                 }
+                Console.WriteLine("------------------------------------------------------------------------------");
             }
-            Console.WriteLine("------------------------------------------------------------------------------");
+            else if (ans == "one")
+            {
+                Console.WriteLine("write the first name of the person you want to search up: ");
+                string firsna = Console.ReadLine();
+                Console.WriteLine("First name-|-second name----|---Address--|---E-Mail-----|-----Phone number------");
+                for (int i = 0; i < contact.Count(); i++)
+                {
+                    if (firsna == contact[i].firstName)
+                    {
+                        Console.WriteLine("| {0,-10} | {1,-10} | {2,-15} | {3,-25} | {4,-10}|", contact[i].firstName, contact[i].lastName, contact[i].address, contact[i].email, contact[i].phone);
+                    }
+
+            }   }      
+
         }
         static void Save(List<Contacts> contact, string fileLocation)
         {
