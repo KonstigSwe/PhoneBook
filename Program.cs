@@ -13,7 +13,6 @@ namespace PhoneBook
     {
         class Contacts
         {
-
             public string firstName, lastName, address, email, phone;
             public Contacts(string fName, string lName, string addr, string mail, string call)
             {
@@ -22,9 +21,7 @@ namespace PhoneBook
                 address = addr;
                 email = mail;
                 phone = call;
-
             }
-
         }
         static void Main(string[] args)
         {
@@ -36,7 +33,6 @@ namespace PhoneBook
                 while ((line = read.ReadLine()) != null)
                 {
                     string[] words = line.Split('#');
-
                     contact.Add(new Contacts(words[0], words[1], words[2], words[3], words[4]));
                 }
                 read.Close();
@@ -49,7 +45,6 @@ namespace PhoneBook
                 if (userComand == "add")
                 {
                     Add(contact);
-
                 }
                 else if (userComand == "show")
                 {
@@ -72,7 +67,6 @@ namespace PhoneBook
                         Save(contact, fileLocation);
                     }
                     Console.WriteLine("Good bye");
-
                 }
                 else if (userComand == "help")
                 {
@@ -88,7 +82,6 @@ namespace PhoneBook
                 }
                 Console.WriteLine();
             } while (userComand != "quit");
-
             Console.ReadKey();
         }
         static void Add(List<Contacts> contact)// add a user to the list
@@ -116,15 +109,12 @@ namespace PhoneBook
             string ans = Console.ReadLine();
             if (ans == "all")
             {
-
-
                 Console.WriteLine("First name-|-second name----|---Address--|---E-Mail-----|-----Phone number------");
                 for (int i = 0; i < contact.Count(); i++)
                 {
                     if (contact[i] != null)
                     {
                         Console.WriteLine("| {0,-10} | {1,-10} | {2,-15} | {3,-25} | {4,-10}|", contact[i].firstName, contact[i].lastName, contact[i].address, contact[i].email, contact[i].phone);
-
                     }
                 }
                 Console.WriteLine("------------------------------------------------------------------------------");
@@ -140,8 +130,8 @@ namespace PhoneBook
                     {
                         Console.WriteLine("| {0,-10} | {1,-10} | {2,-15} | {3,-25} | {4,-10}|", contact[i].firstName, contact[i].lastName, contact[i].address, contact[i].email, contact[i].phone);
                     }
-
-            }   }      
+                }
+            }
 
         }
         static void Save(List<Contacts> contact, string fileLocation)// saves the list to a file
@@ -159,7 +149,6 @@ namespace PhoneBook
         {
             Console.Write("Write the first name of the person you want to delete: ");
             string remove = Console.ReadLine();
-
             for (int i = 0; i < contact.Count(); i++)
             {
                 if (remove == contact[i].firstName)
